@@ -26,28 +26,30 @@ object UniverseVisualizer extends JFXApp {
 
             var scale = 109.0
 
-            val sun = new Star(1.0)
-            val earth = new Earth()
-            var objects = mutable.Buffer(sun, earth)
-            // val betelgeuse = new Star(sunRadius * 764)
+            val earth = new SpaceObject(Color.Blue, 640, 0.009)
+            val sun = new SpaceObject(Color.White, 1500, 1.0)
+            val betelgeuse = new SpaceObject(Color.Red, 3000, 764.0)
+
+            val objects = Vector(sun, earth, betelgeuse)
+            val captions = Vector(("This is Earth", 0, 500))
 
             var oldT = 0L
             var timer = 0L
             val mainLoop = AnimationTimer(t => {
                 if (t - oldT >= 1e9 / 60) {
-
                     g.setFill(Color.Black)
                     g.fillRect(0, 0, displayWidth, displayHeight)
 
-                    earth.draw(g, scale, 20, displayHeight / 2)
-                    sun.draw(g, scale, 150, 100)
+                    objects.foreach(_.draw(g, scale))
+
+                    g.setFill(Color.White)
+                    captions.foreach(c => g.fillText(c._1, 100, displayHeight - 100))
 
                     if (keysPressed.contains(KeyCode.Down) && scale > 1.0) scale -= 1.0
                     if (keysPressed.contains(KeyCode.Up)) scale += 1.0
 
                     if (keysPressed.contains(KeyCode.Right)) objects.foreach(_.moveRight())
                     if (keysPressed.contains(KeyCode.Left)) objects.foreach(_.moveLeft())
-                    // betelgeuse.draw(g, 0, 0)
 
                     oldT = t
                 }
