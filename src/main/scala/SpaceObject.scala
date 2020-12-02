@@ -11,7 +11,7 @@ class SpaceObject(val color: Color, var x: Double, val r: Double) {
         g.fillOval(x, y, d, d)
     }
 
-    def moveLeft(): Unit = x += 1
-    def moveRight(): Unit = x -= 1
+    def moveLeft(): Unit = x += 2
+    def moveRight(): Unit = x -= 2
 
 }
