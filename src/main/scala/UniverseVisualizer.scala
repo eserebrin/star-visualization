@@ -19,8 +19,8 @@ object UniverseVisualizer extends JFXApp {
         else if (x <= 2300) ""
         else if (x <= 3500) "This is the Alpha Centauri star system, the closest stars to the Sun: A, B, and Proxima."
         else if (x <= 3600) ""
-        else if (x <= 4100) "Here is Sirius A, the brightest star in the night sky."
-        else if (x <= 4400) "It is about twice as massive as the Sun."
+        else if (x <= 4100) "Here is Sirius, the brightest star in the night sky."
+        else if (x <= 4400) "It is about twice as massive as the Sun, and there is a White Dwarf Companion."
         else if (x <= 5200) ""
         else if (x <= 6250) "Next is Rigel, a B type star that is 21 times as massive as the Sun."
         else if (x <= 8000) ""
@@ -51,11 +51,12 @@ object UniverseVisualizer extends JFXApp {
             val alphaCentauriA = new SpaceObject(Color.White, 2500, 1.2234)
             val alphaCentauriB = new SpaceObject(Color.Khaki, 3000, 0.8632)
             val proximaCentauri = new SpaceObject(Color.DarkOrange, 3400, 0.1542)
-            val sirius = new SpaceObject(Color.LightBlue, 4000, 1.711)
+            val siriusA = new SpaceObject(Color.LightBlue, 4000, 1.711)
+            val siriusB = new SpaceObject(Color.White, 4750, 0.0084)
             val rigel = new SpaceObject(Color.Blue, 5500, 78.9)
             val betelgeuse = new SpaceObject(Color.Red, 8500, 764.0)
 
-            val objects = Vector(sun, earth, alphaCentauriA, alphaCentauriB, proximaCentauri, sirius, rigel, betelgeuse)
+            val objects = Vector(sun, earth, alphaCentauriA, alphaCentauriB, proximaCentauri, siriusA, siriusB, rigel, betelgeuse)
             var screenX = 640L
 
             var oldT = 0L
